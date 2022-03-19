@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Todo-List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Poku-Redux-Version
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 프로젝트 설명
 
-### `npm start`
+토이프로젝트로 가장많이 하는 투두리스트 만들기를 통해 react 및 redux의 사용법을 익히는것을 목적으로 진행하였습니다.
+기본적인 C,R,U,D 기능을 갖추고 있습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 사용한 기술
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- CSS
+- JSX
+- React
+- Redux
 
-### `npm test`
+## 컴포넌트 설명
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Input.js
 
-### `npm run build`
+새로운 투두를 만드는 컴포넌트입니다.
+useState로 input창에 입력되어있는 문자들을 관리하고 dispatch를 이용하여 todos에 새로운 todo를 입력합니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## TodoList.js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+todos를 .map함수를 이용하여 각 todo별로 쪼개어 Todo.js컴포넌트로 보내주고 Todo.js 에서 나온 반환값들을 묶어서 UI에 표시해 줍니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Todo.js
 
-### `npm run eject`
+TodoList.js에서 받은 todo를 UI로 표시해주고 update와 delete 기능을 가지고 있습니다. todo의 완료상태와 수정가능한 상태에따라 css표현이 다르게 되도록 설정하였고 완료상태와 삭제를 담당하는 버튼이 두개있습니다.
+수정을 원할경우 더블클릭을 함으로써 상태가 변경되고 UI또한 수정가능한 상태로 변환되게 하였습니다.
+수정값을 입력하지 않을 경우 기존에 입력되어있던 값으로 설정됩니다.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Store.js
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+리듀서와 각 액션함수들을 저장하고 있습니다.
