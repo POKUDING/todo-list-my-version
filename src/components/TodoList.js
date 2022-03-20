@@ -2,7 +2,7 @@ import React from "react";
 import Todo from "./Todo";
 import { useSelector } from "react-redux";
 
-const TodoList = () => {
+const TodoList = ({ inputState, setInputState }) => {
   /*const completeHandeler = (todo) => {
     setTodos(
       todos.map((item) => {
@@ -42,7 +42,12 @@ const TodoList = () => {
   return (
     <div className="todobox">
       {todos.map((todo) => (
-        <Todo todo={todo} key={todo.id} />
+        <Todo
+          todo={todo}
+          key={todo.id}
+          inputState={inputState}
+          setInputState={setInputState}
+        />
       ))}
     </div>
   );

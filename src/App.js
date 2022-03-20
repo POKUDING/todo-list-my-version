@@ -5,11 +5,12 @@ import Template from "./components/Template";
 import TodoList from "./components/TodoList";
 
 function App() {
+  const [inputState, setInputState] = useState({ inputBox: "", editBox: "" });
   return (
     <div className="App">
       <Template>
-        <Input />
-        <TodoList />
+        <Input inputState={inputState} setInputState={setInputState} />
+        <TodoList inputState={inputState} setInputState={setInputState} />
       </Template>
     </div>
   );

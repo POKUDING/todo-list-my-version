@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { todoEdit, todoRemove, todoToggle, todoUpdate } from "../store";
 
-const Todo = ({ todo }) => {
-  const [editInput, setEditInput] = useState("");
+const Todo = ({ todo, inputState, setInputState }) => {
   const dispatch = useDispatch();
   const { id, text, isCompleted, editable } = todo;
 
   const editInputHandeler = (e) => {
-    setEditInput(e.target.value);
+    setInputState({ ...inputState, [e.target.name]: e.target.value });
+  };
+
+  const updateHandeler = () => {
+    dispatch(todoUpdate(id, inputState.editBox));
+    setInputState({ ...inputState, editBox: "" });
   };
 
   return (
@@ -17,6 +21,7 @@ const Todo = ({ todo }) => {
         {editable ? (
           <div className="editbox">
             <input
+              name="editBox"
               onChange={editInputHandeler}
               type="text"
               className="editInputBox"
@@ -24,8 +29,8 @@ const Todo = ({ todo }) => {
             />
             <button
               onClick={
-                editInput
-                  ? () => dispatch(todoUpdate(id, editInput))
+                inputState.editBox
+                  ? () => updateHandeler()
                   : () => dispatch(todoEdit(id))
               }
               className="editBtn"

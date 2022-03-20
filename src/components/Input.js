@@ -4,13 +4,12 @@ import store from "../store";
 import { useDispatch, useSelector } from "react-redux";
 import { todoInsert } from "../store";
 
-const Input = () => {
-  const [inputState, setInputState] = useState("");
+const Input = ({ inputState, setInputState }) => {
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
 
   const inputStateHandeler = (e) => {
-    setInputState(e.target.value);
+    setInputState({ ...inputState, [e.target.name]: e.target.value });
     console.log(inputState);
   };
 
@@ -19,7 +18,7 @@ const Input = () => {
 
     let num = 2;
 
-    if (inputState !== "") {
+    if (inputState.inputBox !== "") {
       const makeId = () => {
         if (todos.length > 0) {
           num = todos[todos.length - 1].id + 1;
@@ -28,19 +27,20 @@ const Input = () => {
 
       makeId();
 
-      dispatch(todoInsert(num, inputState));
+      dispatch(todoInsert(num, inputState.inputBox));
     } else {
       alert("할일을 입력해 주세요.");
     }
 
-    setInputState("");
+    setInputState({ ...inputState, inputBox: "" });
   };
 
   return (
     <div className="Input">
       <form>
         <input
-          value={inputState}
+          name="inputBox"
+          value={inputState.inputBox}
           placeholder="할일을 입력해 주세요."
           onChange={inputStateHandeler}
           type="text"

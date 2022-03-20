@@ -48,12 +48,12 @@ export const todoToggle = (id) => {
 
 const initState = {
   todos: [
-    {
+    /*{
       id: 1,
       text: "TODOLIST 만들기",
       isCompleted: false,
       editable: false,
-    },
+    },*/
   ],
 };
 
